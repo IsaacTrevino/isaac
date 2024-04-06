@@ -1,0 +1,7 @@
+{
+    "AppSyncApiName": "isaac",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "S3DeploymentBucket": "amplify-isaac-staging-211125-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/e73822520ef9fe98cb9ae61135d1bf5a94b09d66"
+}
