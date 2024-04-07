@@ -12,35 +12,5 @@
       "AmplifyAppId": "d3cqvk8trp4fjr"
     }
   },
-  "api": {
-    "isaac": {
-      "dependsOn": [],
-      "output": {
-        "authConfig": {
-          "additionalAuthenticationProviders": [
-            {
-              "authenticationType": "AWS_IAM"
-            }
-          ],
-          "defaultAuthentication": {
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 30,
-              "description": "This is an api key"
-            },
-            "authenticationType": "API_KEY"
-          }
-        },
-        "GraphQLAPIIdOutput": "lhiflninknggzb7ou6m6lix3hu",
-        "GraphQLAPIEndpointOutput": "https://f246nmn33raprlwer7vsv3rmpq.appsync-api.us-west-1.amazonaws.com/graphql",
-        "GraphQLAPIKeyOutput": "da2-krkvz2x4uvb27dfvlu74ocvh7u"
-      },
-      "providerPlugin": "awscloudformation",
-      "service": "AppSync",
-      "lastPushTimeStamp": "2024-04-06T21:28:02.726Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-isaac-staging-211125-deployment/amplify-cfn-templates/api/cloudformation-template.json",
-        "logicalId": "apiisaac"
-      }
-    }
-  }
+  "api": {}
 }
