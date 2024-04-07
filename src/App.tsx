@@ -93,7 +93,7 @@ function App() {
                   >
                     {/* button with icon and name, make button styled make same width */}
                     <button
-                      className="flex flex-row items-center bg-gray-800 p-2 rounded-lg self-center"
+                      className="flex flex-row items-center bg-sky-700 p-2 rounded-lg self-center"
                       style={{
                         width: "150px",
                       }}
