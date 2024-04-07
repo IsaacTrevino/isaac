@@ -5,6 +5,9 @@ import {
   FaLinkedin as LinkedInIcon,
   FaDollarSign as DollarIcon,
   FaYinYang as YinYangIcon,
+  FaRobot as RobotIcon,
+  FaGithub as GitHubIcon,
+  FaMediumM as MediumIcon,
 } from "react-icons/fa";
 import { IconType } from "react-icons";
 
@@ -29,19 +32,37 @@ const links: {
       icon: InstagramIcon,
       show: true,
     },
+    {
+      name: "Medium",
+      url: "https://medium.com/@isaac-trevino",
+      icon: MediumIcon,
+      show: true,
+    },
+    {
+      name: "GitHub",
+      url: "https://github.com/isaactrevino",
+      icon: GitHubIcon,
+      show: true,
+    },
   ],
   apps: [
+    {
+      name: "ChatGPT",
+      url: "#",
+      icon: RobotIcon,
+      show: true,
+    },
     {
       name: "Trade.AI",
       url: "#",
       icon: DollarIcon,
-      show: true,
+      show: false,
     },
     {
       name: "Scene.AI",
       url: "#",
       icon: YinYangIcon,
-      show: true,
+      show: false,
     },
   ],
 };
@@ -70,10 +91,17 @@ function App() {
                     rel="noreferrer"
                     className="m-2"
                   >
-                    {/* button with icon and name, make button styled */}
-                    <button className="flex flex-row items-center bg-gray-800 p-2 rounded-lg w-full ">
-                      <link.icon size={32} />
-                      <span className="text-white text-lg font-semibold ml-2">
+                    {/* button with icon and name, make button styled make same width */}
+                    <button
+                      className="flex flex-row items-center bg-gray-800 p-2 rounded-lg self-center"
+                      style={{
+                        width: "150px",
+                      }}
+                    >
+                      <span>
+                        <link.icon size={32} />
+                      </span>
+                      <span className="text-white text-lg font-semibold ml-3">
                         {link.name}
                       </span>
                     </button>
