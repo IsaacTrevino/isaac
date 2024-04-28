@@ -8,6 +8,7 @@ import {
   FaRobot as RobotIcon,
   FaGithub as GitHubIcon,
   FaMediumM as MediumIcon,
+  FaChartArea,
 } from "react-icons/fa";
 import { IconType } from "react-icons";
 
@@ -22,13 +23,13 @@ const links: {
   social: [
     {
       name: "LinkedIn",
-      url: "https://www.linkedin.com/in/isaactrevino1/",
+      url: "https://linkedin.com/in/isaactrevino1/",
       icon: LinkedInIcon,
       show: true,
     },
     {
       name: "Instagram",
-      url: "https://www.instagram.com/_isaac_t/",
+      url: "https://instagram.com/_isaac_t/",
       icon: InstagramIcon,
       show: true,
     },
@@ -47,21 +48,21 @@ const links: {
   ],
   apps: [
     {
-      name: "ChatGPT",
-      url: "#",
-      icon: RobotIcon,
+      name: "Signals.ai",
+      url: "https://signals-ai.click",
+      icon: FaChartArea,
       show: true,
     },
     {
-      name: "Trade.AI",
+      name: "Scene.ai",
       url: "#",
-      icon: DollarIcon,
+      icon: YinYangIcon,
       show: false,
     },
     {
-      name: "Scene.AI",
+      name: "Chatbot.ai",
       url: "#",
-      icon: YinYangIcon,
+      icon: RobotIcon,
       show: false,
     },
   ],
