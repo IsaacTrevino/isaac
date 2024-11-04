@@ -9,6 +9,7 @@ import {
   FaGithub as GitHubIcon,
   FaMediumM as MediumIcon,
   FaChartArea,
+  FaTiktok,
 } from "react-icons/fa";
 import { IconType } from "react-icons";
 
@@ -48,7 +49,7 @@ const links: {
     {
       name: "TicTok",
       url: "https://www.tiktok.com/@isaactrevino9",
-      icon: GitHubIcon,
+      icon: FaTiktok,
       show: true,
     },
   ],
