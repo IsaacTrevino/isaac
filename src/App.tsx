@@ -46,12 +46,6 @@ const links: {
       icon: GitHubIcon,
       show: true,
     },
-    {
-      name: "TicTok",
-      url: "https://www.tiktok.com/@isaactrevino9",
-      icon: FaTiktok,
-      show: true,
-    },
   ],
   apps: [
     {
