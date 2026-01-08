@@ -29,12 +29,6 @@ const links: {
       show: true,
     },
     {
-      name: "Instagram",
-      url: "https://instagram.com/_isaac_t/",
-      icon: InstagramIcon,
-      show: true,
-    },
-    {
       name: "Medium",
       url: "https://medium.com/@isaac-trevino",
       icon: MediumIcon,
