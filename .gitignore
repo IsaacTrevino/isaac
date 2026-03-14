@@ -4,3 +4,25 @@ dist
 server/public
 *.tar.gz
 node_modules/.cache
+
+# Env and secrets
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+
+# Logs and debug
+*.log
+npm-debug.log*
+
+# Test/build artifacts
+coverage/
+.cache/
+build/
+
+# AWS / Amplify generated (do not commit)
+amplifyconfiguration.json
+aws-exports.js
