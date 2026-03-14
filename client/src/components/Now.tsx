@@ -8,7 +8,7 @@ const items = [
     tag: "Live",
     tagAccent: true,
     href: "https://uragents.ai",
-    icon: "/logo/uragents-icon.svg",
+    icon: "/images/uragents-icon.svg",
   },
   {
     title: "Signals.ai — Early days and evolving",

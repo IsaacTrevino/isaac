@@ -1,4 +1,4 @@
-const heroBg = "/hero-bg.png";
+const heroBg = "/images/hero-bg.png";
 
 export default function Hero() {
   const scrollTo = (id: string) => {
