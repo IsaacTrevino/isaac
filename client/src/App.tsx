@@ -12,6 +12,7 @@ import Interests from "@/components/Interests";
 import Connect from "@/components/Connect";
 import Footer from "@/components/Footer";
 import NotFound from "@/pages/not-found";
+import PrivacyPolicy from "@/pages/privacy-policy";
 
 function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme] = useState<"light" | "dark">(() =>
@@ -47,6 +48,7 @@ function App() {
       <ThemeProvider>
         <Router>
           <Route path="/" component={HomePage} />
+          <Route path="/privacy-policy" component={PrivacyPolicy} />
           <Route path="/:rest*" component={NotFound} />
         </Router>
         <Toaster />
