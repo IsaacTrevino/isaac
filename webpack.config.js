@@ -41,17 +41,38 @@ module.exports = (_, { mode }) => ({
       template: path.resolve(__dirname, "client/index.html"),
       inject: "body",
     }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "client/index.html"),
+      filename: "privacy/index.html",
+      inject: "body",
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "client/index.html"),
+      filename: "terms/index.html",
+      inject: "body",
+    }),
     new CopyPlugin({
       patterns: [
         { from: path.resolve(__dirname, "client/public"), to: ".", noErrorOnMissing: true },
       ],
     }),
   ],
+  watchOptions: {
+    ignored: /node_modules/,
+    poll: 1000,
+  },
   devServer: {
-    static: { directory: path.join(__dirname, "client/public") },
+    static: {
+      directory: path.join(__dirname, "client/public"),
+      watch: { usePolling: true, interval: 1000 },
+    },
     port: 3000,
     historyApiFallback: true,
     hot: true,
+    watchFiles: {
+      paths: ["client/**/*"],
+      options: { usePolling: true, interval: 1000 },
+    },
   },
   devtool: mode === "production" ? "source-map" : "eval-cheap-module-source-map",
 });

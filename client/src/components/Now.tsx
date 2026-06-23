@@ -11,6 +11,13 @@ const items = [
     icon: "/images/uragents-icon.svg",
   },
   {
+    title: "The Way — Faith-Focused 2D Adventure",
+    body: "A reflective Christian game about repentance, growth, and walking in truth through story-driven exploration.",
+    tag: "Live",
+    tagAccent: true,
+    icon: "/images/the-way-icon.png",
+  },
+  {
     title: "Signals.ai — Early days and evolving",
     body: "Building something that reacts to live data and iterates over time. Still in the lab, seeing what holds up and what doesn't.",
     tag: "Building",
