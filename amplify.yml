@@ -3,17 +3,19 @@ frontend:
   phases:
     preBuild:
       commands:
+        - git lfs install
+        - git lfs pull
         - npm ci
     build:
       commands:
+        - rm -rf dist
         - npm run build
   artifacts:
     baseDirectory: dist
     files:
       - '**/*'
   cache:
-    paths:
-      - node_modules/**/*
+    paths: []
   customRedirects:
     - source: '/the-way/support'
       target: '/index.html'
