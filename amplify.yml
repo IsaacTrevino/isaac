@@ -3,15 +3,16 @@ frontend:
   phases:
     preBuild:
       commands:
-        # Default Amplify image has no git-lfs; install to /usr/local/bin (each command is a new shell).
+        # Install git-lfs to a user-writable path, pull LFS assets, then install deps.
         - |
+          set -e
+          mkdir -p "$HOME/.local/bin"
           if ! command -v git-lfs >/dev/null 2>&1; then
             curl -sL https://github.com/git-lfs/git-lfs/releases/download/v3.6.1/git-lfs-linux-amd64-v3.6.1.tar.gz | tar -xz -C /tmp
-            install -m 755 /tmp/git-lfs-3.6.1/git-lfs /usr/local/bin/git-lfs
-            git lfs install
+            install -m 755 /tmp/git-lfs-3.6.1/git-lfs "$HOME/.local/bin/git-lfs"
           fi
-        # SSH deploy keys cannot fetch Git LFS objects; use HTTPS for the pull step.
-        - |
+          export PATH="$HOME/.local/bin:$PATH"
+          git lfs install
           if [ -n "$GITHUB_PAT" ]; then
             git remote set-url origin "https://x-access-token:${GITHUB_PAT}@github.com/IsaacTrevino/isaac.git"
           else
@@ -19,7 +20,7 @@ frontend:
           fi
           git lfs pull
           test "$(wc -c < client/public/the-way/index.pck)" -gt 1000000
-        - npm ci
+          npm ci
     build:
       commands:
         - rm -rf dist
