@@ -26,3 +26,7 @@ build/
 # AWS / Amplify generated (do not commit)
 amplifyconfiguration.json
 aws-exports.js
+
+# Large assets (host separately; exceed GitHub 100MB limit)
+client/public/the-way/index.pck
+client/public/videos/
