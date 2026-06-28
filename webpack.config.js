@@ -43,12 +43,17 @@ module.exports = (_, { mode }) => ({
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "client/index.html"),
-      filename: "privacy/index.html",
+      filename: "the-way/privacy/index.html",
       inject: "body",
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "client/index.html"),
-      filename: "terms/index.html",
+      filename: "the-way/terms/index.html",
+      inject: "body",
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "client/index.html"),
+      filename: "the-way/support/index.html",
       inject: "body",
     }),
     new CopyPlugin({
