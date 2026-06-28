@@ -1,5 +1,11 @@
-import { Bot, Box, CircleDot, Radio } from "lucide-react";
+import { useState } from "react";
+import { Bot, Box, Play, Radio } from "lucide-react";
 import FadeIn from "./FadeIn";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const items = [
   {
@@ -15,7 +21,9 @@ const items = [
     body: "A reflective Christian game about repentance, growth, and walking in truth through story-driven exploration.",
     tag: "Live",
     tagAccent: true,
+    href: "/the-way/",
     icon: "/images/the-way-icon.png",
+    trailerHref: "/videos/the-way-ad.mp4",
   },
   {
     title: "Signals.ai — Early days and evolving",
@@ -42,6 +50,8 @@ const items = [
 ];
 
 export default function Now() {
+  const [trailerOpen, setTrailerOpen] = useState(false);
+
   return (
     <section id="now" className="py-24 md:py-32 border-t border-border" aria-labelledby="now-title" data-testid="now-section">
       <div className="max-w-5xl mx-auto px-6">
@@ -127,8 +137,9 @@ export default function Now() {
                       {item.href ? (
                         <a
                           href={item.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          {...(item.href.startsWith("http")
+                            ? { target: "_blank", rel: "noopener noreferrer" }
+                            : {})}
                           className="no-underline hover:underline"
                           style={{ color: "hsl(var(--foreground))" }}
                         >
@@ -142,12 +153,37 @@ export default function Now() {
                   <p className="text-sm leading-relaxed" style={{ color: "hsl(var(--muted-foreground))" }}>
                     {item.body}
                   </p>
+                  {"trailerHref" in item && item.trailerHref ? (
+                    <button
+                      type="button"
+                      onClick={() => setTrailerOpen(true)}
+                      className="inline-flex items-center gap-1.5 text-sm font-medium mt-1 w-fit hover:underline"
+                      style={{ color: "hsl(var(--primary))" }}
+                      data-testid="watch-trailer"
+                    >
+                      <Play className="w-3.5 h-3.5" />
+                      Watch Trailer
+                    </button>
+                  ) : null}
                 </div>
               </div>
             </FadeIn>
           ))}
         </div>
       </div>
+
+      <Dialog open={trailerOpen} onOpenChange={setTrailerOpen}>
+        <DialogContent className="max-w-4xl p-0 overflow-hidden border-0 bg-black">
+          <DialogTitle className="sr-only">The Way — Trailer</DialogTitle>
+          <video
+            key={trailerOpen ? "open" : "closed"}
+            src="/videos/the-way-ad.mp4"
+            controls
+            autoPlay
+            className="w-full aspect-video"
+          />
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }

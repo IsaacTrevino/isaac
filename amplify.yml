@@ -14,3 +14,34 @@ frontend:
   cache:
     paths:
       - node_modules/**/*
+  customRedirects:
+    - source: '/the-way/support'
+      target: '/index.html'
+      status: '200'
+    - source: '/the-way/support/'
+      target: '/index.html'
+      status: '200'
+    - source: '/the-way/privacy'
+      target: '/index.html'
+      status: '200'
+    - source: '/the-way/privacy/'
+      target: '/index.html'
+      status: '200'
+    - source: '/the-way/terms'
+      target: '/index.html'
+      status: '200'
+    - source: '/the-way/terms/'
+      target: '/index.html'
+      status: '200'
+    - source: '/<*>'
+      target: '/index.html'
+      status: '200'
+  customHeaders:
+    - pattern: '**/*.wasm'
+      headers:
+        - key: 'Content-Type'
+          value: 'application/wasm'
+    - pattern: '**/*.pck'
+      headers:
+        - key: 'Content-Type'
+          value: 'application/octet-stream'

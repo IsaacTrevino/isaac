@@ -65,9 +65,40 @@ module.exports = (_, { mode }) => ({
     static: {
       directory: path.join(__dirname, "client/public"),
       watch: { usePolling: true, interval: 1000 },
+      staticOptions: {
+        fallthrough: true,
+      },
     },
     port: 3000,
-    historyApiFallback: true,
+    historyApiFallback: {
+      rewrites: [
+        { from: /^\/the-way\/(support|privacy|terms)\/?$/, to: "/index.html" },
+        { from: /^\/the-way(\/.*)?$/, to: (context) => context.parsedUrl.pathname },
+      ],
+    },
+    setupMiddlewares: (middlewares, devServer) => {
+      if (!devServer) return middlewares;
+
+      middlewares.unshift({
+        name: "the-way-support",
+        middleware: (req, _res, next) => {
+          if (/^\/the-way\/(support|privacy|terms)\/?$/.test(req.path)) {
+            req.url = "/index.html";
+          }
+          next();
+        },
+      });
+
+      devServer.app.get(/\.wasm$/, (_req, res, next) => {
+        res.setHeader("Content-Type", "application/wasm");
+        next();
+      });
+      devServer.app.get(/\.pck$/, (_req, res, next) => {
+        res.setHeader("Content-Type", "application/octet-stream");
+        next();
+      });
+      return middlewares;
+    },
     hot: true,
     watchFiles: {
       paths: ["client/**/*"],

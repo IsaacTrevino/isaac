@@ -5,7 +5,8 @@
   "scripts": {
     "start": "webpack serve --mode development --open",
     "build": "webpack --mode production",
-    "check": "tsc"
+    "check": "tsc",
+    "sync:the-way": "rsync -av --delete --exclude='*.import' --exclude='.gitignore' --exclude='.htaccess' \"/mnt/c/Users/isaac/Projects/The Way/release/web/\" \"client/public/the-way/\""
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

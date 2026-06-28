@@ -1,4 +1,4 @@
-import { Router, Route } from "wouter";
+import { Router, Route, Switch } from "wouter";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "@/lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
@@ -14,6 +14,7 @@ import Footer from "@/components/Footer";
 import NotFound from "@/pages/not-found";
 import PrivacyPolicy from "@/pages/privacy-policy";
 import Terms from "@/pages/terms";
+import TheWaySupport from "@/pages/the-way-support";
 
 function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme] = useState<"light" | "dark">(() =>
@@ -48,10 +49,16 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <Router>
-          <Route path="/" component={HomePage} />
-          <Route path="/privacy" component={PrivacyPolicy} />
-          <Route path="/terms" component={Terms} />
-          <Route path="/:rest*" component={NotFound} />
+          <Switch>
+            <Route path="/" component={HomePage} />
+            <Route path="/the-way/privacy" component={PrivacyPolicy} />
+            <Route path="/the-way/privacy/" component={PrivacyPolicy} />
+            <Route path="/the-way/terms" component={Terms} />
+            <Route path="/the-way/terms/" component={Terms} />
+            <Route path="/the-way/support" component={TheWaySupport} />
+            <Route path="/the-way/support/" component={TheWaySupport} />
+            <Route path="/:rest*" component={NotFound} />
+          </Switch>
         </Router>
         <Toaster />
       </ThemeProvider>
