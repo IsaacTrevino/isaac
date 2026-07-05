@@ -3,7 +3,7 @@ import { useBrowserLocation } from "wouter/use-browser-location";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "@/lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
-import { useEffect, useState } from "react";
+import { ThemeProvider } from "@/hooks/use-theme";
 
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
@@ -24,18 +24,6 @@ function useNormalizedLocation() {
       ? location.slice(0, -1)
       : location;
   return [normalized, navigate] as ReturnType<typeof useBrowserLocation>;
-}
-
-function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme] = useState<"light" | "dark">(() =>
-    window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-  );
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
-  }, [theme]);
-
-  return <>{children}</>;
 }
 
 function HomePage() {

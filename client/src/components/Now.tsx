@@ -1,5 +1,6 @@
 import { Bot, Box, Play, Radio } from "lucide-react";
 import FadeIn from "./FadeIn";
+import { AppStoreIcon, GooglePlayIcon } from "./StoreIcons";
 
 const items = [
   {
@@ -148,8 +149,8 @@ export default function Now() {
                     {item.body}
                   </p>
                   {("trailerHref" in item && item.trailerHref) ||
-                  ("appStoreHref" in item && item.appStoreHref) ||
-                  ("googlePlayHref" in item) ? (
+                    ("appStoreHref" in item && item.appStoreHref) ||
+                    ("googlePlayHref" in item) ? (
                     <div className="flex items-center gap-2 mt-1 flex-wrap">
                       {"trailerHref" in item && item.trailerHref ? (
                         <a
@@ -177,7 +178,7 @@ export default function Now() {
                           aria-label="Download on the App Store"
                           data-testid="app-store-link"
                         >
-                          <img src="/images/app-store.svg" alt="" className="w-4 h-4" />
+                          <AppStoreIcon />
                         </a>
                       ) : null}
                       {"googlePlayHref" in item ? (
@@ -194,7 +195,7 @@ export default function Now() {
                             aria-label="Get it on Google Play"
                             data-testid="google-play-link"
                           >
-                            <img src="/images/google-play.svg" alt="" className="w-4 h-4" />
+                            <GooglePlayIcon />
                           </a>
                         ) : (
                           <span
@@ -207,7 +208,7 @@ export default function Now() {
                             title="Google Play — coming soon"
                             data-testid="google-play-link"
                           >
-                            <img src="/images/google-play.svg" alt="" className="w-4 h-4" />
+                            <GooglePlayIcon />
                           </span>
                         )
                       ) : null}
