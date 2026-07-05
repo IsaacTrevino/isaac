@@ -18,6 +18,8 @@ const items = [
     href: "/the-way/",
     icon: "/images/the-way-icon.png",
     trailerHref: "https://youtube.com/shorts/1oTkomN2aL8?feature=share",
+    appStoreHref: "https://apps.apple.com/us/app/the-way-bible-game/id6785116447",
+    googlePlayHref: "",
   },
   {
     title: "Signals.ai — Early days and evolving",
@@ -145,18 +147,71 @@ export default function Now() {
                   <p className="text-sm leading-relaxed" style={{ color: "hsl(var(--muted-foreground))" }}>
                     {item.body}
                   </p>
-                  {"trailerHref" in item && item.trailerHref ? (
-                    <a
-                      href={item.trailerHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm font-medium mt-1 w-fit hover:underline"
-                      style={{ color: "hsl(var(--primary))" }}
-                      data-testid="watch-trailer"
-                    >
-                      <Play className="w-3.5 h-3.5" />
-                      Watch Trailer
-                    </a>
+                  {("trailerHref" in item && item.trailerHref) ||
+                  ("appStoreHref" in item && item.appStoreHref) ||
+                  ("googlePlayHref" in item) ? (
+                    <div className="flex items-center gap-2 mt-1 flex-wrap">
+                      {"trailerHref" in item && item.trailerHref ? (
+                        <a
+                          href={item.trailerHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-sm font-medium w-fit hover:underline"
+                          style={{ color: "hsl(var(--primary))" }}
+                          data-testid="watch-trailer"
+                        >
+                          <Play className="w-3.5 h-3.5" />
+                          Watch Trailer
+                        </a>
+                      ) : null}
+                      {"appStoreHref" in item && item.appStoreHref ? (
+                        <a
+                          href={item.appStoreHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center w-8 h-8 rounded-lg border transition-colors hover:border-primary"
+                          style={{
+                            borderColor: "hsl(var(--border))",
+                            color: "hsl(var(--foreground))",
+                          }}
+                          aria-label="Download on the App Store"
+                          data-testid="app-store-link"
+                        >
+                          <img src="/images/app-store.svg" alt="" className="w-4 h-4" />
+                        </a>
+                      ) : null}
+                      {"googlePlayHref" in item ? (
+                        item.googlePlayHref ? (
+                          <a
+                            href={item.googlePlayHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center w-8 h-8 rounded-lg border transition-colors hover:border-primary"
+                            style={{
+                              borderColor: "hsl(var(--border))",
+                              color: "hsl(var(--foreground))",
+                            }}
+                            aria-label="Get it on Google Play"
+                            data-testid="google-play-link"
+                          >
+                            <img src="/images/google-play.svg" alt="" className="w-4 h-4" />
+                          </a>
+                        ) : (
+                          <span
+                            className="inline-flex items-center justify-center w-8 h-8 rounded-lg border opacity-40 cursor-not-allowed"
+                            style={{
+                              borderColor: "hsl(var(--border))",
+                              color: "hsl(var(--muted-foreground))",
+                            }}
+                            aria-label="Google Play — coming soon"
+                            title="Google Play — coming soon"
+                            data-testid="google-play-link"
+                          >
+                            <img src="/images/google-play.svg" alt="" className="w-4 h-4" />
+                          </span>
+                        )
+                      ) : null}
+                    </div>
                   ) : null}
                 </div>
               </div>
