@@ -27,9 +27,7 @@ function useNormalizedLocation() {
 }
 
 function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme] = useState<"light" | "dark">(() =>
-    window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-  );
+  const [theme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");

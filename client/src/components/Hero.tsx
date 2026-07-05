@@ -17,7 +17,7 @@ export default function Hero() {
         style={{
           backgroundImage: `url(${heroBg})`,
           backgroundPosition: "center 40%",
-          opacity: 0.3,
+          opacity: 0.18,
         }}
         aria-hidden="true"
       />
@@ -26,7 +26,7 @@ export default function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, hsl(var(--background)/0.2) 0%, hsl(var(--background)/0.5) 50%, hsl(var(--background)) 100%)",
+            "linear-gradient(180deg, hsl(var(--background)/0.45) 0%, hsl(var(--background)/0.75) 50%, hsl(var(--background)) 100%)",
         }}
         aria-hidden="true"
       />
