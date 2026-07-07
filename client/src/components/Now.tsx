@@ -20,7 +20,7 @@ const items = [
     icon: "/images/the-way-icon.png",
     trailerHref: "https://youtube.com/shorts/1oTkomN2aL8?feature=share",
     appStoreHref: "https://apps.apple.com/us/app/the-way-bible-game/id6785116447",
-    googlePlayHref: "",
+    googlePlayHref: "https://play.google.com/store/apps/details?id=app.theway.game",
   },
   {
     title: "Signals.ai — Early days and evolving",
