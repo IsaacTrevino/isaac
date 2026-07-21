@@ -52,14 +52,14 @@ export default function Connect() {
         </p>
 
         <FadeIn>
-          <div className="flex flex-wrap gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {socials.map((s) => (
               <a
                 key={s.label}
                 href={s.href}
                 target={s.href.startsWith("mailto") ? undefined : "_blank"}
                 rel={s.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-                className="flex items-center gap-3 px-5 py-3.5 rounded-xl border no-underline transition-all duration-200 hover:-translate-y-0.5 flex-1 min-w-40 max-w-56"
+                className="flex items-center gap-3 px-5 py-3.5 rounded-xl border no-underline transition-all duration-200 hover:-translate-y-0.5 min-w-0"
                 style={{
                   background: "hsl(var(--card))",
                   borderColor: "hsl(var(--card-border))",
@@ -73,10 +73,10 @@ export default function Connect() {
                 }}
                 data-testid={`social-link-${s.label.toLowerCase()}`}
               >
-                <span style={{ color: "hsl(var(--primary))" }}>{s.icon}</span>
-                <div>
+                <span className="shrink-0" style={{ color: "hsl(var(--primary))" }}>{s.icon}</span>
+                <div className="min-w-0">
                   <div className="text-sm font-semibold">{s.label}</div>
-                  <div className="text-xs" style={{ color: "hsl(var(--muted-foreground))" }}>
+                  <div className="text-xs truncate" style={{ color: "hsl(var(--muted-foreground))" }}>
                     {s.handle}
                   </div>
                 </div>

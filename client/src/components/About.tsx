@@ -33,7 +33,23 @@ export default function About() {
                 I'm Isaac — I build things with computers, spend too much time thinking about how things work, and try to document the journey as honestly as I can.
               </p>
               <p className="text-base leading-relaxed" style={{ color: "hsl(var(--muted-foreground))" }}>
-                By day I'm deep in code — cloud infrastructure, Full-Stack Development, the occasional rabbit hole that turns into a weekend project. By night it's usually disc golf, 3D printing something questionable, or watching Formula 1 reruns.
+                By day I'm deep in code — cloud infrastructure, Full-Stack Development, the occasional rabbit hole that turns into a weekend project. I run{" "}
+                <a
+                  href="https://www.crestnode.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 align-baseline underline underline-offset-2 hover:opacity-80"
+                  style={{ color: "hsl(var(--foreground))" }}
+                >
+                  <img
+                    src="/images/crestnode-icon.svg"
+                    alt=""
+                    className="inline-block w-4 h-4 rounded-[3px]"
+                    aria-hidden
+                  />
+                  Crestnode
+                </a>
+                , the company behind the products I'm shipping. By night it's usually disc golf, 3D printing something questionable, or watching Formula 1 reruns.
               </p>
               <p className="text-base leading-relaxed" style={{ color: "hsl(var(--muted-foreground))" }}>
                 This site isn't a portfolio. It's more like a logbook — a record of what I'm building, what I'm learning, and what's on my mind.

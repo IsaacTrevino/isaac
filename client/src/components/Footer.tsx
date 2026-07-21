@@ -23,16 +23,13 @@ export default function Footer() {
             © 2026
           </span>
         </div>
-        <a
-          href="https://www.perplexity.ai/computer"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs no-underline transition-colors hover:text-foreground"
+        <span
+          className="text-xs"
           style={{ color: "hsl(var(--muted-foreground)/0.6)" }}
           data-testid="footer-attribution"
         >
-          Created with Perplexity Computer
-        </a>
+          Designed & built by Isaac Trevino
+        </span>
       </div>
     </footer>
   );

@@ -1,4 +1,4 @@
-import { Bot, Box, Play, Radio } from "lucide-react";
+import { Bot, Box, Play } from "lucide-react";
 import FadeIn from "./FadeIn";
 import { AppStoreIcon, GooglePlayIcon } from "./StoreIcons";
 
@@ -10,6 +10,7 @@ const items = [
     tagAccent: true,
     href: "https://uragents.ai",
     icon: "/images/uragents-icon.svg",
+    iconClassName: "w-[70%] h-[70%] object-contain",
   },
   {
     title: "The Way — Faith-Focused 2D Adventure",
@@ -27,7 +28,7 @@ const items = [
     body: "Building something that reacts to live data and iterates over time. Still in the lab, seeing what holds up and what doesn't.",
     tag: "Building",
     tagAccent: true,
-    icon: Radio,
+    icon: "/images/signals-icon.svg",
   },
   {
     title: "Getting reps in with AI agents",
@@ -81,7 +82,7 @@ export default function Now() {
               >
                 {/* Column 1: Icon */}
                 <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center border shrink-0"
+                  className="w-10 h-10 rounded-lg flex items-center justify-center border shrink-0 overflow-hidden"
                   style={{
                     background: "hsl(var(--muted))",
                     borderColor: "hsl(var(--border))",
@@ -89,7 +90,13 @@ export default function Now() {
                   aria-hidden
                 >
                   {typeof item.icon === "string" ? (
-                    <img src={item.icon} alt="" className="w-6 h-6 object-contain" />
+                    <img
+                      src={item.icon}
+                      alt=""
+                      className={"iconClassName" in item && item.iconClassName
+                        ? item.iconClassName
+                        : "w-full h-full object-cover"}
+                    />
                   ) : (
                     <item.icon className="w-5 h-5" style={{ color: "hsl(var(--muted-foreground))" }} />
                   )}
