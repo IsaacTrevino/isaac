@@ -1,0 +1,18 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pie-gradient" x1="7" y1="5" x2="25" y2="27" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A78BFA"/>
+      <stop offset="1" stop-color="#F472B6"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="#17151F"/>
+  <path
+    d="M10 24V9H17.25C21.1 9 23.5 11.15 23.5 14.5C23.5 17.85 21.1 20 17.25 20H14"
+    stroke="url(#pie-gradient)"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="23.5" cy="8.5" r="1.5" fill="#F472B6"/>
+  <circle cx="8.5" cy="24.5" r="1" fill="#A78BFA"/>
+</svg>
