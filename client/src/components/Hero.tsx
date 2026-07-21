@@ -61,7 +61,7 @@ export default function Hero() {
           style={{ color: "hsl(var(--muted-foreground))", fontWeight: 300 }}
           data-testid="hero-tagline"
         >
-          Documenting the journey — building things, figuring things out, and writing it all down along the way.
+          Building things, figuring things out, and writing it all down as I go.
         </p>
 
         <div className="flex flex-wrap gap-4 items-center">
