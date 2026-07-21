@@ -27,7 +27,6 @@ const items = [
     body: "Building something that reacts to live data and iterates over time. Still in the lab, seeing what holds up and what doesn't.",
     tag: "Building",
     tagAccent: true,
-    href: "https://signals-ai.click",
     icon: Radio,
   },
   {
