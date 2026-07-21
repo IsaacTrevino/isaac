@@ -1,8 +1,23 @@
-import { Bot, Box, Play } from "lucide-react";
+import { Play, type LucideIcon } from "lucide-react";
 import FadeIn from "./FadeIn";
+import SectionHeading from "./SectionHeading";
 import { AppStoreIcon, GooglePlayIcon } from "./StoreIcons";
 
-const items = [
+interface NowItem {
+  title: string;
+  body: string;
+  tag: string;
+  tagAccent: boolean;
+  /** Image path, or a Lucide component for items without artwork. */
+  icon: string | LucideIcon;
+  iconClassName?: string;
+  href?: string;
+  trailerHref?: string;
+  appStoreHref?: string;
+  googlePlayHref?: string;
+}
+
+const items: NowItem[] = [
   {
     title: "Uragents.ai — AI agents that use the browser",
     body: "Building a SaaS where AI agents observe, think, and act in real browsers. Plan paths, chat-driven workflows, and scheduled runs. Most of my dev time goes here — every solved problem seems to reveal three more.",
@@ -24,25 +39,28 @@ const items = [
     googlePlayHref: "https://play.google.com/store/apps/details?id=app.theway.game",
   },
   {
-    title: "Signals.ai — Early days and evolving",
+    title: "Embrace Church — Website & Mobile App",
+    body: "Built a connected church experience for sermons, events, groups, announcements, and giving — available on iOS and Android alongside a redesigned website.",
+    tag: "Live",
+    tagAccent: true,
+    href: "https://www.embrace-emc.church",
+    icon: "/images/embrace-church-icon.png",
+    appStoreHref: "https://apps.apple.com/us/app/embrace-church-emc/id6789007980",
+    googlePlayHref: "https://play.google.com/store/apps/details?id=church.embrace.mobile",
+  },
+  {
+    title: "Signals — Early days and evolving",
     body: "Building something that reacts to live data and iterates over time. Still in the lab, seeing what holds up and what doesn't.",
     tag: "Building",
     tagAccent: true,
     icon: "/images/signals-icon.svg",
   },
   {
-    title: "Getting reps in with AI agents",
-    body: "Fascinated by what becomes possible when you give LLMs real tools to use. Experimenting with agentic workflows and trying to build things that are genuinely useful rather than just impressive demos.",
-    tag: "Exploring",
-    tagAccent: false,
-    icon: Bot,
-  },
-  {
-    title: "3D printing random stuff",
-    body: "The printer is almost always running something. Right now it's mostly functional parts for the home office — cable management clips, monitor mounts, that kind of thing.",
-    tag: "Tinkering",
-    tagAccent: false,
-    icon: Box,
+    title: "Project Pie",
+    body: "A new product experiment still taking shape behind the scenes. Keeping the details under wraps while I work through the first version.",
+    tag: "Building",
+    tagAccent: true,
+    icon: "/images/project-pie-icon.svg",
   },
 ];
 
@@ -50,24 +68,9 @@ export default function Now() {
   return (
     <section id="now" className="py-24 md:py-32 border-t border-border" aria-labelledby="now-title" data-testid="now-section">
       <div className="max-w-5xl mx-auto px-6">
-        <p className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: "hsl(var(--primary))" }}>
-          <span className="block w-4 h-px" style={{ background: "hsl(var(--primary))" }} />
-          Now
-        </p>
-        <h2
-          className="font-black tracking-tight mb-3"
-          id="now-title"
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(2rem, 4vw, 3rem)",
-            letterSpacing: "-0.03em",
-          }}
-        >
-          What I'm up to.
-        </h2>
-        <p className="text-base max-w-xl mb-14 leading-relaxed" style={{ color: "hsl(var(--muted-foreground))" }}>
+        <SectionHeading eyebrow="Now" title="What I'm up to." titleId="now-title">
           A running snapshot of what's occupying my time, attention, and curiosity right now.
-        </p>
+        </SectionHeading>
 
         <div className="flex flex-col gap-px border border-border rounded-2xl overflow-hidden">
           {items.map((item, i) => (
@@ -80,53 +83,56 @@ export default function Now() {
                 }}
                 data-testid={`now-item-${i}`}
               >
-                {/* Column 1: Icon */}
-                <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center border shrink-0 overflow-hidden"
-                  style={{
-                    background: "hsl(var(--muted))",
-                    borderColor: "hsl(var(--border))",
-                  }}
-                  aria-hidden
-                >
-                  {typeof item.icon === "string" ? (
-                    <img
-                      src={item.icon}
-                      alt=""
-                      className={"iconClassName" in item && item.iconClassName
-                        ? item.iconClassName
-                        : "w-full h-full object-cover"}
-                    />
-                  ) : (
-                    <item.icon className="w-5 h-5" style={{ color: "hsl(var(--muted-foreground))" }} />
-                  )}
-                </div>
-                {/* Column 2: Tag */}
-                <div className="w-20 shrink-0 pt-0.5">
-                  <span
-                    className="inline-block text-xs font-semibold px-3 py-1 rounded-full border"
-                    style={
-                      item.tag === "Live"
-                        ? {
-                          color: "hsl(142 55% 35%)",
-                          background: "hsl(142 45% 93%)",
-                          borderColor: "hsl(142 40% 75%)",
-                        }
-                        : item.tagAccent
-                          ? {
-                            color: "hsl(var(--primary))",
-                            background: "hsl(var(--primary)/0.1)",
-                            borderColor: "hsl(var(--primary)/0.3)",
-                          }
-                          : {
-                            color: "hsl(var(--muted-foreground))",
-                            background: "hsl(var(--muted))",
-                            borderColor: "hsl(var(--border))",
-                          }
-                    }
+                {/* Icon + tag share a row on mobile; separate grid columns from sm up */}
+                <div className="flex items-center gap-3 sm:contents">
+                  {/* Column 1: Icon */}
+                  <div
+                    className="w-10 h-10 rounded-lg flex items-center justify-center border shrink-0 overflow-hidden"
+                    style={{
+                      background: "hsl(var(--muted))",
+                      borderColor: "hsl(var(--border))",
+                    }}
+                    aria-hidden
                   >
-                    {item.tag}
-                  </span>
+                    {typeof item.icon === "string" ? (
+                      <img
+                        src={item.icon}
+                        alt=""
+                        className={"iconClassName" in item && item.iconClassName
+                          ? item.iconClassName
+                          : "w-full h-full object-cover"}
+                      />
+                    ) : (
+                      <item.icon className="w-5 h-5" style={{ color: "hsl(var(--muted-foreground))" }} />
+                    )}
+                  </div>
+                  {/* Column 2: Tag */}
+                  <div className="shrink-0 sm:w-20 sm:pt-0.5">
+                    <span
+                      className="inline-block text-xs font-semibold px-3 py-1 rounded-full border"
+                      style={
+                        item.tag === "Live"
+                          ? {
+                            color: "hsl(var(--live))",
+                            background: "hsl(var(--live-bg))",
+                            borderColor: "hsl(var(--live-border))",
+                          }
+                          : item.tagAccent
+                            ? {
+                              color: "hsl(var(--primary))",
+                              background: "hsl(var(--primary)/0.1)",
+                              borderColor: "hsl(var(--primary)/0.3)",
+                            }
+                            : {
+                              color: "hsl(var(--muted-foreground))",
+                              background: "hsl(var(--muted))",
+                              borderColor: "hsl(var(--border))",
+                            }
+                      }
+                    >
+                      {item.tag}
+                    </span>
+                  </div>
                 </div>
                 {/* Column 3: Title + body */}
                 <div className="flex flex-col gap-2 min-w-0">
@@ -158,19 +164,6 @@ export default function Now() {
                     ("appStoreHref" in item && item.appStoreHref) ||
                     ("googlePlayHref" in item) ? (
                     <div className="flex items-center gap-2 mt-1 flex-wrap">
-                      {"trailerHref" in item && item.trailerHref ? (
-                        <a
-                          href={item.trailerHref}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-sm font-medium w-fit hover:underline"
-                          style={{ color: "hsl(var(--primary))" }}
-                          data-testid="watch-trailer"
-                        >
-                          <Play className="w-3.5 h-3.5" />
-                          Watch Trailer
-                        </a>
-                      ) : null}
                       {"appStoreHref" in item && item.appStoreHref ? (
                         <a
                           href={item.appStoreHref}
@@ -217,6 +210,19 @@ export default function Now() {
                             <GooglePlayIcon />
                           </span>
                         )
+                      ) : null}
+                      {"trailerHref" in item && item.trailerHref ? (
+                        <a
+                          href={item.trailerHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-sm font-medium w-fit hover:underline"
+                          style={{ color: "hsl(var(--primary))" }}
+                          data-testid="watch-trailer"
+                        >
+                          <Play className="w-3.5 h-3.5" />
+                          Watch Trailer
+                        </a>
                       ) : null}
                     </div>
                   ) : null}

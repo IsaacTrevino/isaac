@@ -1,10 +1,8 @@
+import { scrollToSelector } from "@/lib/scroll";
+
 const heroBg = "/images/hero-bg.png";
 
 export default function Hero() {
-  const scrollTo = (id: string) => {
-    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section
       className="relative min-h-screen flex items-center overflow-hidden"
@@ -66,8 +64,8 @@ export default function Hero() {
 
         <div className="flex flex-wrap gap-4 items-center">
           <button
-            onClick={() => scrollTo("#now")}
-            className="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-full transition-all hover:-translate-y-0.5 active:translate-y-0"
+            onClick={() => scrollToSelector("#now")}
+            className="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-full border-none cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_28px_hsl(var(--primary)/0.42)] active:translate-y-0"
             style={{
               background: "hsl(var(--primary))",
               color: "hsl(var(--primary-foreground))",
@@ -79,9 +77,8 @@ export default function Hero() {
           </button>
 
           <button
-            onClick={() => scrollTo("#connect")}
-            className="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-full border transition-all hover:-translate-y-0.5 active:translate-y-0"
-            style={{ borderColor: "hsl(var(--border))", color: "hsl(var(--foreground))" }}
+            onClick={() => scrollToSelector("#connect")}
+            className="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-full border border-border cursor-pointer bg-transparent text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:text-primary active:translate-y-0"
             data-testid="hero-btn-connect"
           >
             Say Hello

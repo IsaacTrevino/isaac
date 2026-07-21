@@ -1,11 +1,23 @@
 import { useEffect, useState } from "react";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
+import { useActiveSection } from "@/hooks/use-active-section";
+import { scrollToSelector, scrollToTop } from "@/lib/scroll";
+
+const links = [
+  { label: "About", href: "#about" },
+  { label: "Now", href: "#now" },
+  { label: "Interests", href: "#interests" },
+  { label: "Connect", href: "#connect" },
+];
+
+const hrefs = links.map((l) => l.href);
 
 export default function Nav() {
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const active = useActiveSection(hrefs);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -13,17 +25,9 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const links = [
-    { label: "About", href: "#about" },
-    { label: "Now", href: "#now" },
-    { label: "Interests", href: "#interests" },
-    { label: "Connect", href: "#connect" },
-  ];
-
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    scrollToSelector(href);
   };
 
   return (
@@ -40,9 +44,9 @@ export default function Nav() {
           href="#"
           onClick={(e) => {
             e.preventDefault();
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            scrollToTop();
           }}
-          className="flex items-center gap-3 no-underline"
+          className="flex items-center gap-3 no-underline rounded-md"
           aria-label="Isaac Trevino — home"
           data-testid="nav-logo"
         >
@@ -73,7 +77,11 @@ export default function Nav() {
               <li key={l.href}>
                 <button
                   onClick={() => handleNavClick(l.href)}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors bg-transparent border-none cursor-pointer p-0"
+                  aria-current={active === l.href ? "true" : undefined}
+                  className={`relative text-sm font-medium transition-colors bg-transparent border-none cursor-pointer p-0 after:absolute after:-bottom-1.5 after:left-0 after:h-px after:bg-primary after:transition-all after:duration-300 ${active === l.href
+                      ? "text-foreground after:w-full"
+                      : "text-muted-foreground hover:text-foreground after:w-0"
+                    }`}
                   data-testid={`nav-link-${l.label.toLowerCase()}`}
                 >
                   {l.label}
@@ -110,7 +118,9 @@ export default function Nav() {
             <button
               key={l.href}
               onClick={() => handleNavClick(l.href)}
-              className="text-left text-sm font-medium text-muted-foreground hover:text-foreground transition-colors bg-transparent border-none cursor-pointer p-0"
+              aria-current={active === l.href ? "true" : undefined}
+              className={`text-left text-sm font-medium transition-colors bg-transparent border-none cursor-pointer p-0 ${active === l.href ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                }`}
               data-testid={`nav-mobile-link-${l.label.toLowerCase()}`}
             >
               {l.label}
