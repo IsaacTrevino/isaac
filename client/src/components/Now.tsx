@@ -56,11 +56,11 @@ const items: NowItem[] = [
     icon: "/images/signals-icon.svg",
   },
   {
-    title: "Project Pie",
+    title: "π",
     body: "A new product experiment still taking shape behind the scenes. Keeping the details under wraps while I work through the first version.",
     tag: "Building",
     tagAccent: true,
-    icon: "/images/project-pie-icon.svg",
+    icon: "/images/pi-icon.svg",
   },
 ];
 
