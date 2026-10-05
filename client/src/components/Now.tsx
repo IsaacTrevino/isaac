@@ -49,6 +49,16 @@ const items: NowItem[] = [
     googlePlayHref: "https://play.google.com/store/apps/details?id=church.embrace.mobile",
   },
   {
+    title: "Kingdom Singles — Faith-first in-person dating",
+    body: "A Christian dating app where singles meet at hosted events, then unlock chat only after a mutual in-person QR scan. No swipe deck, no cold DMs.",
+    tag: "Live",
+    tagAccent: true,
+    href: "https://kingdomsingles.app",
+    icon: "/images/kingdom-singles-icon.png",
+    appStoreHref: "https://apps.apple.com/us/app/kingdom-singles/id6802505194",
+    googlePlayHref: "https://play.google.com/store/apps/details?id=app.kingdomsingles",
+  },
+  {
     title: "Signals — Early days and evolving",
     body: "Building something that reacts to live data and iterates over time. Still in the lab, seeing what holds up and what doesn't.",
     tag: "Building",
