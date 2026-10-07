@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "apps": {
+    "the-way": {
+      "android": {
+        "enabled": false,
+        "latest_version": "1.2.0",
+        "minimum_supported_version": "1.0.0",
+        "store_url": "https://play.google.com/store/apps/details?id=org.theway.game",
+        "message": "A new version of The Way is available. Please update to continue.",
+        "release_notes": ""
+      },
+      "ios": {
+        "enabled": false,
+        "latest_version": "1.2.0",
+        "minimum_supported_version": "1.0.0",
+        "store_url": "https://apps.apple.com/us/app/the-way-bible-game/id6785116447",
+        "message": "A new version of The Way is available. Please update to continue.",
+        "release_notes": ""
+      }
+    }
+  }
+}
